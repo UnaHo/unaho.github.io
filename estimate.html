@@ -4,14 +4,15 @@
     <meta charset="utf-8" />
   </head>
   <body>
-    <div id="divMain">
-        XXX
+    <div>
+        <h1>Card info</h1>
+        <div id="divCardInfo"></div>
     </div>
 
     <script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-  crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -22,8 +23,9 @@
         // jQuery Ready 簡寫
         $(function(){
             var objVar = getUrlVar();
+            var objAreaCardInfo = $('#divCardInfo');
 
-            console.log(objVar);
+            // console.log(objVar);
             ApiCard();
 
             function ApiCard(){
@@ -34,9 +36,27 @@
                     //data: data,
                     success: function(data) {
                         // 成功
+                        let jsonCard = data.output;
+                        let aryAllowKey = ['id', 'due', 'desc', 'labels', 'name'];
+                        let aryTable=[];
+
+                        aryTable.push('<table>');
+                            $.each(jsonCard, function (k, v) {
+                                if (aryAllowKey.indexOf(k) < 0) return; //continute
+                                aryTable.push('<tr>');
+                                aryTable.push(`<th>${k}</th>`);
+                                if(k=='labels')
+                                    aryTable.push(`<td>${v['name']} / ${v['color']}</td>`);
+                                else
+                                    aryTable.push(`<td>${v}</td>`);
+                                aryTable.push('</tr>');
+                            });
+                        aryTable.push('</table>');
+
+                        objAreaCardInfo.html(aryTable.join(''));
                     },
                     error: function(xhr, status, error) {
-                        // 失敗
+                        objAreaCardInfo.html(`API FAIL`);
                     }
                 });
             }
