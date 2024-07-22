@@ -36,20 +36,54 @@
                     //data: data,
                     success: function(data) {
                         // 成功
-                        let jsonCard = JSON.parse(data.output);
-                        let aryAllowKey = ['id', 'due', 'desc', 'labels', 'name'];
+                        // let jsonCard = JSON.parse(data.output);
+                        let jsonCard = data.output;
+                        // let aryAllowKey = ['id', 'due', 'desc', 'labels', 'name'];
                         let aryTable=[];
 
                         aryTable.push('<table>');
                             $.each(jsonCard, function (k, v) {
-                                if (aryAllowKey.indexOf(k) < 0) return; //continute
+                                // if (aryAllowKey.indexOf(k) < 0) return; //continute
                                 aryTable.push('<tr>');
                                 aryTable.push(`<th>${k}</th>`);
                                 //labels = array
                                 if(k=='labels'){
+
+                                    if(v==null || v.length<=0) return; //continute
+
                                     let aryLabels = [];
                                     $.each(v, function (vi, vo) {
                                         aryLabels.push(`${vo.name}[${vo.color}]`);
+                                    });
+                                    aryTable.push(`<td>${aryLabels.join(';')}</td>`);
+                                }
+                                else if(k=='checklists'){
+
+                                    if(v==null || v.length<=0) return; //continute
+
+                                    let aryLabels = [];
+                                    $.each(v.checkItems, function (vi, vo) {
+                                        aryLabels.push(`[${vo.state}] ${vo.name}`);
+                                    });
+                                    aryTable.push(`<td>${aryLabels.join(';')}</td>`);
+                                }
+                                else if(k=='members'){
+
+                                    if(v==null || v.length<=0) return; //continute
+
+                                    let aryLabels = [];
+                                    $.each(v, function (vi, vo) {
+                                        aryLabels.push(`[${vo.username}] ${vo.fullName}`);
+                                    });
+                                    aryTable.push(`<td>${aryLabels.join(';')}</td>`);
+                                }
+                                else if(k=='actions'){
+
+                                    if(v==null || v.length<=0) return; //continute
+
+                                    let aryLabels = [];
+                                    $.each(v, function (vi, vo) {
+                                        aryLabels.push(`${vo.type} | Text:${vo['text']} | [${vo.memberCreator.username}] ${vo.memberCreator.fullName}`);
                                     });
                                     aryTable.push(`<td>${aryLabels.join(';')}</td>`);
                                 }
