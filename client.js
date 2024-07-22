@@ -3,13 +3,10 @@ TrelloPowerUp.initialize({
       return [
         {
           icon: "https://cdn.glitch.com/1b42d7fe-bda8-4af8-a6c8-eff0cea9e08a%2Frocket-ship.png?1494946700421",
-          text: "Una2",
+          text: "Una3",
           callback: function (t) {
             return t.card('id') .then (function(card) {
-                return t.popup({
-                  title: 'GetCard',
-                  url: `http://localhost/EMSAPI/actapi/Trello/GetCard/${card.id}`
-                 });
+                return `http://localhost/EMSAPI/actapi/Trello/GetCard/${card.id}`;
                });
             
           },
