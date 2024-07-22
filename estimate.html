@@ -20,6 +20,7 @@
     <script>
         // jQuery Ready 簡寫
         $(function(){
+            var t = TrelloPowerUp.iframe();
             var objVar = getUrlVar();
             var objAreaCardInfo = $('#divCardInfo');
 
@@ -115,6 +116,11 @@
                         aryTable.push('</table>');
 
                         objAreaCardInfo.html(aryTable.join(''));
+
+                        //重新調整大小
+                        t.render(function () {
+                            t.sizeTo("#divOuter").done();
+                        });
                     },
                     error: function(xhr, status, error) {
                         objAreaCardInfo.html(`API FAIL`);
@@ -131,12 +137,6 @@
                 }
                 return objVar;
             }
-        });
-
-        var t = TrelloPowerUp.iframe();
-
-        t.render(function () {
-            t.sizeTo("#divOuter").done();
         });
         
     </script>
