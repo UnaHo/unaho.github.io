@@ -11,7 +11,7 @@ TrelloPowerUp.initialize({
                   url: `/?action=run&card_id=${card.id}&token=${token}`,
                   height: 200,
                  });
-               }) ;
+               });
             
           },
         },
