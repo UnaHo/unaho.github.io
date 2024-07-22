@@ -50,14 +50,14 @@
 
                                     if(v==null || v.length<=0) return; //continute
 
-                                    let aryLabels = [];
+                                    let aryContent = [];
                                     $.each(v, function (vi, vo) {
-                                        aryLabels.push(`${vo.name}[${vo.color}]`);
+                                        aryContent.push(`${vo.name}[${vo.color}]`);
                                     });
 
                                     aryTable.push('<tr>');
                                     aryTable.push(`<th>${k}</th>`);
-                                    aryTable.push(`<td>${aryLabels.join(';')}</td>`);
+                                    aryTable.push(`<td>${aryContent.join(';')}</td>`);
                                     aryTable.push('</tr>');
                                 }
                                 else if(k=='checklists'){
@@ -69,11 +69,11 @@
                                         aryTable.push('<tr>');
                                         aryTable.push(`<th>${k}_${vo.name}</th>`);
                                         //items
-                                        let aryLabels = [];
+                                        let aryContent = [];
                                         $.each(vo.checkItems, function (vi, vo) {
-                                            aryLabels.push(`[${vo.state}] ${vo.name}`);
+                                            aryContent.push(`[${vo.state}] ${vo.name}`);
                                         });
-                                        aryTable.push(`<td>${aryLabels.join(';')}</td>`);
+                                        aryTable.push(`<td>${aryContent.join(';')}</td>`);
                                         aryTable.push('</tr>');
                                     });
                                 }
@@ -81,14 +81,14 @@
 
                                     if(v==null || v.length<=0) return; //continute
 
-                                    let aryLabels = [];
+                                    let aryContent = [];
                                     $.each(v, function (vi, vo) {
-                                        aryLabels.push(`[${vo.username}] ${vo.fullName}`);
+                                        aryContent.push(`[${vo.username}] ${vo.fullName}`);
                                     });
 
                                     aryTable.push('<tr>');
                                     aryTable.push(`<th>${k}</th>`);
-                                    aryTable.push(`<td>${aryLabels.join(';')}</td>`);
+                                    aryTable.push(`<td>${aryContent.join(';')}</td>`);
                                     aryTable.push('</tr>');
                                 }
                                 else if(k=='actions'){
@@ -101,7 +101,7 @@
                                         aryTable.push(`<th>${k}_${vi}</th>`);
                                         //data
                                         aryTable.push(`<td>`);
-                                        aryLabels.push(`${vo.type} | ${vo.data['text']} | [${vo.memberCreator.username}] ${vo.memberCreator.fullName} | ${vo.date}`);
+                                        aryTable.push(`${vo.type} | ${vo.data['text']} | [${vo.memberCreator.username}] ${vo.memberCreator.fullName} | ${vo.date}`);
                                         aryTable.push(`</td>`);
                                         aryTable.push('</tr>');
                                     });
