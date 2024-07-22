@@ -36,7 +36,7 @@
                     //data: data,
                     success: function(data) {
                         // 成功
-                        let jsonCard = data.output;
+                        let jsonCard = JSON.parse(data.output);
                         let aryAllowKey = ['id', 'due', 'desc', 'labels', 'name'];
                         let aryTable=[];
 
