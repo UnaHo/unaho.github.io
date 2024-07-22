@@ -92,7 +92,7 @@
 
                                     let aryLabels = [];
                                     $.each(v, function (vi, vo) {
-                                        aryLabels.push(`${vo.type} | Text:${vo['text']} | [${vo.memberCreator.username}] ${vo.memberCreator.fullName}`);
+                                        aryLabels.push(`${vo.type} | Text:${vo.data['text']} | [${vo.memberCreator.username}] ${vo.memberCreator.fullName}`);
                                     });
 
                                     aryTable.push(`<th>${k}</th>`);
