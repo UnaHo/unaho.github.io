@@ -45,7 +45,7 @@
                             $.each(jsonCard, function (k, v) {
                                 // if (aryAllowKey.indexOf(k) < 0) return; //continute
                                 aryTable.push('<tr>');
-                                aryTable.push(`<th>${k}</th>`);
+                                
                                 //labels = array
                                 if(k=='labels'){
 
@@ -55,17 +55,24 @@
                                     $.each(v, function (vi, vo) {
                                         aryLabels.push(`${vo.name}[${vo.color}]`);
                                     });
+
+                                    aryTable.push(`<th>${k}</th>`);
                                     aryTable.push(`<td>${aryLabels.join(';')}</td>`);
                                 }
                                 else if(k=='checklists'){
 
                                     if(v==null || v.length<=0) return; //continute
 
-                                    let aryLabels = [];
-                                    $.each(v.checkItems, function (vi, vo) {
-                                        aryLabels.push(`[${vo.state}] ${vo.name}`);
+                                    $.each(v, function (vi, vo) {
+                                        //list
+                                        aryTable.push(`<th>${k}_${vo.name}</th>`);
+                                        //items
+                                        let aryLabels = [];
+                                        $.each(vo.checkItems, function (vi, vo) {
+                                            aryLabels.push(`[${vo.state}] ${vo.name}`);
+                                        });
+                                        aryTable.push(`<td>${aryLabels.join(';')}</td>`);
                                     });
-                                    aryTable.push(`<td>${aryLabels.join(';')}</td>`);
                                 }
                                 else if(k=='members'){
 
@@ -75,6 +82,8 @@
                                     $.each(v, function (vi, vo) {
                                         aryLabels.push(`[${vo.username}] ${vo.fullName}`);
                                     });
+
+                                    aryTable.push(`<th>${k}</th>`);
                                     aryTable.push(`<td>${aryLabels.join(';')}</td>`);
                                 }
                                 else if(k=='actions'){
@@ -85,10 +94,15 @@
                                     $.each(v, function (vi, vo) {
                                         aryLabels.push(`${vo.type} | Text:${vo['text']} | [${vo.memberCreator.username}] ${vo.memberCreator.fullName}`);
                                     });
+
+                                    aryTable.push(`<th>${k}</th>`);
                                     aryTable.push(`<td>${aryLabels.join(';')}</td>`);
                                 }
-                                else
+                                else{
+                                    aryTable.push(`<th>${k}</th>`);
                                     aryTable.push(`<td>${v}</td>`);
+                                }
+                                    
                                 aryTable.push('</tr>');
                             });
                         aryTable.push('</table>');
