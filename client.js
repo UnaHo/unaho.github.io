@@ -7,9 +7,8 @@ TrelloPowerUp.initialize({
           callback: function (t) {
             return t.card('id') .then (function(card) {
                 return t.popup({
-                  title: 'Superhero Checklist - Run',
-                  url: `/?action=run&card_id=${card.id}&token=${token}`,
-                  height: 200,
+                  title: 'GetCard',
+                  url: `http://localhost/EMSAPI/actapi/Trello/GetCard/${card.id}`
                  });
                });
             
