@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
   </head>
   <body>
+    <div id="divMain">
+        XXX
+    </div>
+
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -23,10 +27,14 @@
         });
 
         var authenticationSuccess = function() {
+            const elem = document.getElementById("divMain");
+            elem.innerHTML = 'Successful authentication';
             console.log('Successful authentication');
         };
         
         var authenticationFailure = function() {
+            const elem = document.getElementById("divMain");
+            elem.innerHTML = 'Failed authentication';
             console.log('Failed authentication');
         };
     </script>
