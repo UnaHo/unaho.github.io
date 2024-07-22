@@ -6,7 +6,10 @@ TrelloPowerUp.initialize({
           text: "Una3",
           callback: function (t) {
             return t.card('id') .then (function(card) {
-                return `http://localhost/EMSAPI/actapi/Trello/GetCard/${card.id}`;
+                return t.popup({
+                  title: 'GetCard',
+                  url: `estimate.html?id=${card.id}`
+                 });
                });
             
           },
