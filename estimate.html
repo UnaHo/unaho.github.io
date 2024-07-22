@@ -45,8 +45,14 @@
                                 if (aryAllowKey.indexOf(k) < 0) return; //continute
                                 aryTable.push('<tr>');
                                 aryTable.push(`<th>${k}</th>`);
-                                if(k=='labels')
-                                    aryTable.push(`<td>${v['name']} / ${v['color']}</td>`);
+                                //labels = array
+                                if(k=='labels'){
+                                    let aryLabels = [];
+                                    $.each(v, function (vi, vo) {
+                                        aryLabels.push(`${vi.name}[${vo.color}]`);
+                                    });
+                                    aryTable.push(`<td>${aryLabels.join(';')}</td>`);
+                                }
                                 else
                                     aryTable.push(`<td>${v}</td>`);
                                 aryTable.push('</tr>');
