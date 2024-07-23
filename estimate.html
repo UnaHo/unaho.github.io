@@ -21,9 +21,15 @@
         // jQuery Ready 簡寫
         $(function(){
             var t = TrelloPowerUp.iframe();
+            var objConfig;
             var objVar = getUrlVar();
             var objAreaCardInfo = $('#divCardInfo');
 
+            $.getJSON( "config.json", function(d) {
+                objConfig = d;
+            });
+
+            console.log(objConfig)
             // console.log(objVar);
             ApiCard();
 

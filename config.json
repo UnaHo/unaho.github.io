@@ -1,0 +1,8 @@
+{
+    apiURLs:[
+        {
+            name:'GetCard',
+            url:'http://localhost/EMSAPI/actapi/Trello/GetCard'
+        }
+    ],
+}
