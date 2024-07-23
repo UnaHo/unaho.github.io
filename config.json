@@ -1,8 +1,8 @@
 {
-    apiURLs:[
+    "apiURLs":[
         {
-            name:'GetCard',
-            url:'http://localhost/EMSAPI/actapi/Trello/GetCard'
+            "name":"GetCard",
+            "url":"http://localhost/EMSAPI/actapi/Trello/GetCard"
         }
-    ],
+    ]
 }
