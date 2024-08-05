@@ -6,6 +6,7 @@ TrelloPowerUp.initialize({
           text: "Una240722-8",
           callback: function (t) {
             return t.card('id') .then (function(card) {
+              console.log(card)
                 return t.popup({
                   title: 'GetCard',
                   url: `estimate.html?id=${card.id}`

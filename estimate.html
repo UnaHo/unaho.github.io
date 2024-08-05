@@ -25,17 +25,33 @@
             var objVar = getUrlVar();
             var objAreaCardInfo = $('#divCardInfo');
 
-            $.getJSON("config.json", function(d) {
-                objConfig = d;
-            });
+            Start();
 
-            console.log(objConfig)
-            // console.log(objVar);
-            ApiCard();
+            async function Start(){
+                //取得設定檔
+                await GetConfig("./config.json");
+                // console.log(objConfig);
 
-            function ApiCard(){
+                //執行
+                ApiCard(objConfig["GetCard"]);
+            }
+
+            async function GetConfig(url) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`Response status: ${response.status}`);
+                    }
+
+                    objConfig = await response.json();
+                } catch (error) {
+                    console.error(error.message);
+                }
+            }
+
+            function ApiCard(url){
                 $.ajax({
-                    url: `http://localhost/EMSAPI/actapi/Trello/GetCard/${objVar.id}`, 
+                    url: `${url}/${objVar.id}`, 
                     method: "GET",
                     dataType: "json", 
                     //data: data,
