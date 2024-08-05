@@ -15,7 +15,8 @@
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <script src="https://p.trellocdn.com/power-up.min.js"></script>
-    <script src="https://api.trello.com/1/client.js?key=fa9839f60d54e160ba1ec46ce926abd5"></script>
+    <!--API KEY-->
+    <script src="https://api.trello.com/1/client.js?key=63faa36237494765fc76646aaefd7592"></script>
 
     <script>
         // jQuery Ready 簡寫
@@ -51,7 +52,7 @@
 
             function ApiCard(url){
                 $.ajax({
-                    url: `${url}/${objVar.id}`, 
+                    url: `${url}/${objVar.id}?loginMemberId=${objVar.member}`, 
                     method: "GET",
                     dataType: "json", 
                     //data: data,
