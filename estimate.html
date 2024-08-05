@@ -128,6 +128,15 @@
                                         aryTable.push('</tr>');
                                     });
                                 }
+                                else if(k=='loginMember'){
+
+                                    if(v==null || v.length<=0) return; //continute
+
+                                    aryTable.push('<tr>');
+                                    aryTable.push(`<th>${k}</th>`);
+                                    aryTable.push(`<td>[${v.username}] ${v.fullName}</td>`);
+                                    aryTable.push('</tr>');
+                                }
                                 else{
                                     aryTable.push('<tr>');
                                     aryTable.push(`<th>${k}</th>`);
