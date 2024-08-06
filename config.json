@@ -1,3 +1,3 @@
 {
-    "GetCard":"http://DieBankBS01/OtherAPI/actapi/Trello/GetCard"
+    "GetCard":"http://172.16.106.228/OtherAPI/actapi/Trello/GetCard"
 }
