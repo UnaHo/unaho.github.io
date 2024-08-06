@@ -7,6 +7,7 @@
   <body>
     <div id="divOuter">
         <h1>Card info</h1>
+        <h3 id="h3URL"></h3>
         <div id="divCardInfo"></div>
     </div>
 
@@ -32,6 +33,9 @@
                 //取得設定檔
                 await GetConfig("./config.json");
                 // console.log(objConfig);
+
+                //show
+                $('#h3URL').html(`API:${objConfig["GetCard"]}`);
 
                 //執行
                 ApiCard(objConfig["GetCard"]);
