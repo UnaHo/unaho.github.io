@@ -1,3 +1,4 @@
 {
-    "GetCard":"https://diebankbs01:81/actapi/Trello/GetCard"
+    "GetCard":"https://mespmap01:81/actapi/Trello/GetCard",
+    "SyncToPM":"https://mespmap01:81/actapi/Trello/SyncToPM"
 }
