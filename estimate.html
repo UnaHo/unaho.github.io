@@ -189,7 +189,7 @@
                 $.ajax({
                     url: `${objConfig["SyncToPM"]}`, 
                     type: "POST",
-                    data: JSON.stringify({ input: {"CardId": objVar.id, "LoginMemberId": objVar.member} }),
+                    data: JSON.stringify({"CardId": objVar.id, "LoginMemberId": objVar.member}),
                     dataType: "json", 
                     contentType: "application/json; charset=utf-8",
                     success: function(data) {
