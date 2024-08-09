@@ -187,9 +187,9 @@
                 ButtonLoading(objAction);
 
                 $.ajax({
-                    url: `${objConfig["SyncToPM"]}/${objVar.id}?loginMemberId=${objVar.member}`, 
+                    url: `${objConfig["SyncToPM"]}`, 
                     type: "POST",
-                    data: JSON.stringify({ input: '' }),
+                    data: JSON.stringify({ input: {"CardId": objVar.id, "LoginMemberId": objVar.member} }),
                     dataType: "json", 
                     contentType: "application/json; charset=utf-8",
                     success: function(data) {
