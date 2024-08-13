@@ -160,7 +160,12 @@
                                 else{
                                     aryTable.push('<tr>');
                                     aryTable.push(`<th>${k}</th>`);
-                                    aryTable.push(`<td>${v}</td>`);
+                                    if(k == 'desc'){
+                                        aryTable.push(`<td><textarea rows="5">${v}</textarea></td>`);
+                                    }
+                                    else
+                                        aryTable.push(`<td>${v}</td>`);
+                                    
                                     aryTable.push('</tr>');
                                 }
                                     
