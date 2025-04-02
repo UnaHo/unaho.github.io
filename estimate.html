@@ -68,7 +68,7 @@
 
             function ApiCard(url){
                 $.ajax({
-                    url: `${url}/${objVar.id}?loginMemberId=${objVar.member}`, 
+                    url: `${url}?id=${objVar.id}&loginMemberId=${objVar.member}`, 
                     method: "GET",
                     dataType: "json", 
                     //data: data,

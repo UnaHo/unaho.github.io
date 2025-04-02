@@ -1,5 +1,5 @@
 {
-    "GetCard":"https://mespmap01:81/actapi/Trello/GetCard",
-    "GetCardLocal":"http://localhost/OtherAPI/actapi/Trello/GetCard",
-    "SyncToPM":"https://mespmap01:81/actapi/Trello/SyncToPM"
+    "GetCard":"https://mespmap01.ose.com.tw:81/Trello/GetCard",
+    "GetCardLocal":"http://localhost/OtherService/Trello/GetCard",
+    "SyncToPM":"https://mespmap01.ose.com.tw:81/Trello/SyncToPM"
 }
