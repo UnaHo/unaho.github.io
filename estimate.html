@@ -79,7 +79,7 @@
                         }
 
                         // let jsonCard = JSON.parse(data.output);
-                        let jsonCard = data.output;
+                        let jsonCard = data.data;
                         // let aryAllowKey = ['id', 'due', 'desc', 'labels', 'name'];
                         let aryTable=[];
 
@@ -203,7 +203,7 @@
                             return;
                         }
                         //OK
-                        ShowErrorMessage(data.output);
+                        ShowErrorMessage(data.data);
                         
                     },
                     error: function(xhr, status, error) {
