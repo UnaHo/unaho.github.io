@@ -38,7 +38,8 @@
 
             $(document).on('click', '#btnSync', function (e) {
                 ClearErrorMessage();
-                ApiSync($(this));
+                // ApiSync($(this));
+                ApiGetSync($(this));
             });
 
             async function Start(){
@@ -184,6 +185,31 @@
                     },
                     complete: function (data) {
                         
+                    }
+                });
+            }
+
+            function ApiGetSync(objAction){
+                ButtonLoading(objAction);
+
+                $.ajax({
+                    url: `${objConfig["SyncToPM"]}?id=${objVar.id}&loginMemberId=${objVar.member}`, 
+                    type: "GET",
+                    dataType: "json", 
+                    success: function(data) {
+                        if(data.errorMessage && data.errorMessage.length > 0){
+                            ShowErrorMessage(data.errorMessage);
+                            return;
+                        }
+                        //OK
+                        ShowErrorMessage(data.data);
+                        
+                    },
+                    error: function(xhr, status, error) {
+                        ShowErrorMessage(`API Sync fail.`);
+                    },
+                    complete: function (data) {
+                        ButtonReset(objAction);
                     }
                 });
             }
