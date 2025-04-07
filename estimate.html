@@ -14,7 +14,8 @@
         <!--顯示錯誤訊息，預設隱藏-->
         <textarea id="divErrorMessage" class="is-error" hidden></textarea>
         <div id="divCardInfo">WAIT...</div>
-        <h3 id="h3URL"></h3>
+        <h3 id="h3URL_API"></h3>
+        <h3 id="h3URL_Page"></h3>
     </div>
 
     <script
@@ -48,9 +49,6 @@
                 await GetConfig("./config.json");
                 // console.log(objConfig);
 
-                //show
-                $('#h3URL').html(`API:${objConfig["GetCard"]}`);
-
                 //執行
                 ApiCard(objConfig["GetCard"]);
             }
@@ -69,8 +67,14 @@
             }
 
             function ApiCard(url){
+                let fullURL = `${url}?id=${objVar.id}&loginMemberId=${objVar.member}`;
+
+                //show
+                $('#h3URL_API').html(`API:${fullURL}`);
+                $('#h3URL_Page').html(`Page:${objConfig["TrelloPage"]}?id=${objVar.id}&member=${objVar.member}`);
+
                 $.ajax({
-                    url: `${url}?id=${objVar.id}&loginMemberId=${objVar.member}`, 
+                    url: fullURL, 
                     method: "GET",
                     dataType: "json", 
                     //data: data,
