@@ -49,6 +49,10 @@
                 await GetConfig("./config.json");
                 // console.log(objConfig);
 
+                //show id不能直接帶入顯示，會被trello額外編碼
+                $('#h3URL_API').html(`API:${objConfig["GetCard"]}?id=xxx&loginMemberId=ooo`);
+                $('#h3URL_Page').html(`Page:${objConfig["TrelloPage"]}?id=xxx&member=ooo`);
+
                 //執行
                 ApiCard(objConfig["GetCard"]);
             }
@@ -67,14 +71,8 @@
             }
 
             function ApiCard(url){
-                let fullURL = `${url}?id=${objVar.id}&loginMemberId=${objVar.member}`;
-
-                //show
-                $('#h3URL_API').html(`API:${fullURL}`);
-                $('#h3URL_Page').html(`Page:${objConfig["TrelloPage"]}?id=${objVar.id}&member=${objVar.member}`);
-
                 $.ajax({
-                    url: fullURL, 
+                    url: `${url}?id=${objVar.id}&loginMemberId=${objVar.member}`, 
                     method: "GET",
                     dataType: "json", 
                     //data: data,
@@ -160,7 +158,7 @@
 
                                     aryTable.push('<tr>');
                                     aryTable.push(`<th>${k}</th>`);
-                                    aryTable.push(`<td>[${v.username}] ${v.fullName}</td>`);
+                                    aryTable.push(`<td>[${v.username}] ${v.fullName} | ${v.id}</td>`);
                                     aryTable.push('</tr>');
                                 }
                                 else{
