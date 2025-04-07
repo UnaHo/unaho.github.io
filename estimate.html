@@ -39,6 +39,7 @@
             $(document).on('click', '#btnSync', function (e) {
                 ClearErrorMessage();
                 // ApiSync($(this));
+                //改用GET避免POST引發的 unauthorized card permission requested 錯誤
                 ApiGetSync($(this));
             });
 
@@ -202,7 +203,7 @@
                             return;
                         }
                         //OK
-                        ShowErrorMessage(data.data);
+                        ShowMessage(data.data);
                         
                     },
                     error: function(xhr, status, error) {
@@ -229,7 +230,7 @@
                             return;
                         }
                         //OK
-                        ShowErrorMessage(data.data);
+                        ShowMessage(data.data);
                         
                     },
                     error: function(xhr, status, error) {
@@ -253,10 +254,19 @@
 
             function ClearErrorMessage(){
                 objErrorMessage.attr('hidden','hidden');
+                if (objErrorMessage.hasClass("is-error")) {
+                    objErrorMessage.removeClass("is-error");
+                }
                 objErrorMessage.html('');
             }
 
             function ShowErrorMessage(strMsg){
+                objErrorMessage.removeAttr('hidden');
+                objErrorMessage.addClass('is-error');
+                objErrorMessage.html(strMsg);
+            }
+
+            function ShowMessage(strMsg){
                 objErrorMessage.removeAttr('hidden');
                 objErrorMessage.html(strMsg);
             }
